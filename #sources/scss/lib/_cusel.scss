@@ -1,0 +1,252 @@
+// размер шрифта у кусел в пикс
+$fz-cusel: 18;
+
+// высота строки у кусел
+$lh-dropdown: calc((24 / $fz-cusel) * 1em);
+
+// высота clickable
+$h-clickable: calc((48 / $fz-cusel) * 1em);
+
+// паддинги внутри clickable
+$p-clickable: 0 calc((36 / $fz-cusel) * 1em) 0 calc((10 / $fz-cusel) * 1em);
+
+// border-radius clickable
+$bor-rad: 3;
+$bor-rad-clickable: calc(($bor-rad / $fz-cusel) * 1em);
+
+// border у clickable
+$bor-clickable: calc((1 / $fz-cusel) * 1em) solid #fff;
+
+// background-color clickable
+$bc-clickable: rgba(255, 255, 255, 0.85);
+
+// color clickable
+$c-clickable: #272733;
+
+// width picture (стрелочка вниз справа) clickable
+$w-pic-clickable: calc((20 / $fz-cusel) * 1em);
+
+// height picture clickable
+$h-pic-clickable: calc((20 / $fz-cusel) * 1em); 
+
+// right расстояние у picture clickable
+$r-pic-clickable: calc((14 / $fz-cusel) * 1em); 
+
+// картинка и картинка у активного clickable
+$bu-clickable: url("../images/icon-chevron.svg") no-repeat center, url("../images/icon-chevron-up.svg") no-repeat center -100vh;
+
+//---------------------------------------------
+
+// размер шрифта у dropdown
+$fz-dropdown: 18;
+
+// высота строки у dropdown
+$lh-dropdown: calc((24 / $fz-dropdown) * 1em);
+
+// высота списка dropdown 
+$h-dropdown: calc((150 / $fz-dropdown) * 1em); 
+
+// padding у ссылок внутри dropdown
+$p-item-dropdown: calc((5 / $fz-dropdown) * 1em) calc((10 / $fz-dropdown) * 1em);
+
+// background-color dropdown
+$bc-dropdown: rgba(39, 39, 51, 0.9); 
+
+// color dropdown
+$c-dropdown: #fff; 
+
+// background-color у ховер ссылок внутри dropdown
+$bc-item-dropdown: none;
+
+// color у ховер ссылок внутри dropdown
+$c-item-dropdown: $color-accept;
+
+// background-color у selected ссылок внутри dropdown
+$bc-item-dropdown-selected: rgba(255, 255, 255, 0.2);
+
+// color у selected ссылок внутри dropdown
+$c-item-dropdown-selected: inherit; 
+
+// width скролла у dropdown
+$w-scroll-dropdown: calc((6 / $fz-dropdown) * 1em); 
+
+// background-color скролла у dropdown
+$bc-scroll-dropdown: #3D4050;
+
+// color ползунка скролла у dropdown
+$c-scroll-dropdown: $color-accept;
+
+// бордер у dropdown
+$bor-dropdown: 1px solid #3D4050;
+
+// закругления у dropdown
+$bor-rad-dropdown: 0 0 calc(($bor-rad / $fz-dropdown) * 1em) calc(($bor-rad / $fz-dropdown) * 1em);
+
+//------------------------------------------
+
+// z-index у активного кусел
+$z-index-active: 1100;
+
+// закругления у активного clickable
+$bor-rad-clickable-active: calc(($bor-rad / $fz-cusel) * 1em) calc(($bor-rad / $fz-cusel) * 1em) 0 0;
+
+// цвет бордера у активного clickable
+$bor-c-clickable-active: rgba(61, 64, 80, 0.85);
+
+// background-color у активного clickable
+$bc-clickable-active: rgba(61, 64, 80, 0.85);
+
+// цвет текста у активного clickable
+$c-clickable-active: #fff;
+
+// время анимации у кусела
+$animate-time-cusel: $animate-time;
+
+// время анимации у кусела
+$bc-overlay: transparent; 
+
+.custom-select {
+  position: relative;
+  z-index: 1;
+  font-size: $fz-cusel * 1px;
+  &.active {
+    z-index: $z-index-active;
+    .custom-select__dropdown {
+      margin-top: 0;
+      left: 0;
+    }
+    .custom-select__clickable:not(.custom-select__clickable--select) {
+      background-color: $bc-clickable-active;
+      border-radius: $bor-rad-clickable-active;
+      color: $c-clickable-active;
+      border-color: $bor-c-clickable-active;
+      &:after {
+        background-position: center -100vh, center;
+        background-size: auto auto, contain;
+      }
+    }
+    .custom-select__overlay {
+      display: block;
+    }
+  }
+  &__overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: none;
+    background-color: $bc-overlay;
+  }
+
+  &__clickable {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: inherit;
+    height: $h-clickable;
+    padding: $p-clickable;
+    font-size: 1em;
+    border-radius: $bor-rad-clickable;
+    transition: all $animate-time-cusel ease-in-out;
+    color: $c-clickable;
+    background-color: $bc-clickable;
+    border: $bor-clickable;    
+    position: relative;
+    z-index: 11;
+    &:after {
+      content: '';
+      width: $w-pic-clickable;
+      height: $h-pic-clickable;
+      position: absolute;
+      right: $r-pic-clickable;
+      top: 50%;
+      transform: translateY(-50%);
+      background: $bu-clickable;
+      background-size: contain, contain;
+    }
+    &--select {
+      &:after {
+        display: none;
+      }
+      display: block;
+      width: 100%;
+      text-overflow: '';
+      appearance: none;
+      background: none;
+      font-family: inherit;
+      background: $bu-clickable;
+      background-position: center right $r-pic-clickable, -100vh $r-pic-clickable;
+      background-size: $w-pic-clickable $h-pic-clickable, $w-pic-clickable $h-pic-clickable;
+      background-color: $bc-clickable;
+      &:focus {
+        outline:none;
+        //background-position: -100vh $r-pic-clickable, center right $r-pic-clickable;  
+      }
+    }
+  }
+
+  &__dropdown {
+    background: $bc-dropdown;
+    color: $c-dropdown;
+    font-size: $fz-dropdown;
+    line-height: $lh-dropdown;
+    border-radius: $bor-rad-dropdown;
+    border: $bor-dropdown;
+    border-top: none;
+    position: absolute;
+    left: -10000vw;
+    width: 100%;
+    top: 100%;
+    z-index: 12;
+    margin-top: calc((-15 / $fz-dropdown) * 1em);
+    transition: margin-top $animate-time-cusel ease-in-out;
+    height: $h-dropdown;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: $c-scroll-dropdown $bc-scroll-dropdown;
+
+    &::-webkit-scrollbar {
+      width: $w-scroll-dropdown;
+    }
+    &::-webkit-scrollbar-track {
+      background: $bc-scroll-dropdown;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $c-scroll-dropdown;
+      border-radius: calc($w-scroll-dropdown / 2);
+    }
+  }
+
+  &__list {
+    @include no-list;
+  }
+
+  &__list-item {
+   &.selected {
+    .custom-select__list-link {
+      background-color: $bc-item-dropdown-selected;
+      color: $c-item-dropdown-selected;
+    }
+   }
+  }
+
+  &__list-link {
+    display: block;
+    padding: $p-item-dropdown;
+    text-decoration: none !important;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    &:hover {
+      background: $bc-item-dropdown;
+      color: $c-item-dropdown;
+    }
+  }
+
+  &__select {
+    position: absolute;
+    left: -10000vw;
+  }
+}

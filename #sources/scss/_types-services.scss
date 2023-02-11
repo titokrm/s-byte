@@ -1,0 +1,15 @@
+.types-services {
+
+  &__item {
+    max-width: rem(485);
+    margin-bottom: rem(62);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @include max($mob-width) {
+    &__item:not(:last-child) {
+      margin-bottom: rem(36);
+    }
+  }
+}

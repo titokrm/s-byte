@@ -1,0 +1,61 @@
+.web-design {
+  display: flex;
+  &__description {
+    background-color: $back-default-color;
+    padding: rem(56) rem(54);
+    flex: 1 1 auto;
+    order: 2;
+    min-width: 0;
+  }
+
+  &__btn {
+    margin-bottom: rem(52);
+    margin-left: rem(-10);
+    margin-top: rem(-10);
+  }
+
+  &__title {
+    margin-bottom: rem(46);
+    @include fontrem(40, 57.75);
+  }
+
+  &__text {
+    @include fontrem(18, 28);
+  }
+
+  &__picture {
+    flex: 0 0 perc(908, 1366);
+    order: 1;
+  }
+  @include max(1200) {
+    &__description {
+      padding: rem(28);
+    }
+    &__picture {
+      flex: 0 0 60%;
+    }
+    &__btn {
+      margin-bottom: rem(28);
+    }
+    &__title {
+      @include fontrem(32, 40);
+      margin-bottom: rem(28);
+    }
+    &__text {
+      @include fontrem(16, 28);
+    }
+  }
+  @include max($tab-width) {
+    display: block;
+    &__picture {
+      padding-bottom: perc(715, 908);
+    }
+    &__description {
+      padding-top: rem(36);
+      padding-bottom: rem(36);
+    }
+    &__title {
+      margin-bottom: rem(14);
+    }
+  }
+}

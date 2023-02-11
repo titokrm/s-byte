@@ -1,0 +1,49 @@
+.text-block {
+  
+  &__title {
+    @include fontrem(45, 66, normal);
+    letter-spacing: .03em;
+    margin-bottom: rem(24);
+  }
+
+  &__light {
+    font-weight: 300;
+  }
+
+  &__bold {
+    font-weight: bold;
+  }
+
+  &__text {
+    @include fontrem(15.57, 28, normal);
+    letter-spacing: 0.03em;
+    margin-bottom: rem(28);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__black {
+    font-weight: 900;
+  }
+
+  &__btn {
+    margin-top: rem(17);
+  }
+  @include max(1200) {
+    &__title {
+      @include fontrem(36, 44);
+    }
+  }
+  @include max($mob-width) {
+    &__btn {
+      margin-top: rem(12);
+    }
+    &__title {
+      margin-bottom: rem(14);
+    }
+    &__text {
+      margin-bottom: rem(14);
+    }
+  }
+}

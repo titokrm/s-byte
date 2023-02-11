@@ -1,0 +1,11 @@
+.burger {
+  display: block;
+  padding: rem(10);
+  border: none;
+  background: none;
+  cursor: pointer;
+  &__img {
+    display: block;
+    @include sizerem(33, 29); //sizerem(width,[height])
+  }
+}

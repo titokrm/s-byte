@@ -1,0 +1,28 @@
+$default-font: 'Roboto', sans-serif;
+
+/*----Color const-----*/
+$back-default-color: #f3f3f3;
+$text-default-color: #262f32;
+
+$link-default-color: inherit;
+$link-hover-default-color: inherit;
+$link-decoration: underline;
+$link-hover-decoration: none;
+/*----Size const------*/
+$rem-size: 16;
+
+$width-container: 1366;
+$padding-container: 0;
+$padding-container-tab: 0;
+$padding-container-mob: 0;
+$padding-container-xs: 0;
+
+/*----media const------*/
+$desk-sm-width: 1366;
+$tab-width: 992;
+$mob-width: 768;
+$xs-mob-width: 575;
+$min-width: 320;
+
+$animate-time: .2s;
+

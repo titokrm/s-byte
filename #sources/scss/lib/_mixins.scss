@@ -1,0 +1,143 @@
+@use 'sass:math';
+
+@function round($value, $precision) {
+  @return calc(math.round(calc($value * $precision)) / $precision);
+}
+
+@function rem($px-size) {
+  @return round(calc($px-size / $rem-size) * 1rem, 100);
+}
+
+@function perc($value, $base) {
+  @return round(calc($value / $base) * 100%, 100);
+}
+
+@function em($px-size, $font-size) {
+  @return round(calc(($px-size / $font-size) * 1em), 100);
+}
+
+@mixin fontrem($font-size, $line-height, $font-weight:false) {
+  font-size: rem($font-size);
+  line-height: em($line-height, $font-size);
+  @if ($font-weight) {
+    font-weight: $font-weight;
+  }  
+}
+
+@mixin font($font-size, $line-height, $font-weight:false) {
+  font-size: ($font-size) * 1px;
+  line-height: em($line-height, $font-size);
+  @if ($font-weight) {
+    font-weight: $font-weight;
+  }  
+}
+
+@mixin sizerem($width, $height:false) {
+  width: rem($width);
+  @if ($height) {
+    height: rem($height);
+  }
+}
+
+@mixin size($width, $height:false) {
+  width: ($width) * 1px;
+  @if ($height) {
+    height: ($height) * 1px;
+  }
+}
+
+@mixin absolute-center() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-all($num) {
+  position: absolute;
+  left: $num;
+  right: $num;
+  top: $num;
+  bottom: $num;
+}
+
+@mixin gradient($top-color, $bottom-color) {
+  background-image: linear-gradient(top, $top-color, $bottom-color);
+  background-repeat: repeat-x;
+}
+
+@mixin placeholder($color,$opacity) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+
+  /* Firefox 19+ */
+  &::-moz-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+
+  /* Firefox 18- */
+  &:-moz-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+
+  &:-ms-input-placeholder {
+    opacity: $opacity;
+    color: $color;
+  }
+  &::placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+}
+
+@mixin no-list() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin no-appearance {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-overflow: '';
+  -ms-appearance: none;
+  appearance: none !important;
+}
+
+@mixin underline-mark($color, $block: false, $size: 20%, $position: 0%) {
+  background-image: linear-gradient(
+    transparent 0%, 
+    transparent (100% - $size - $position), 
+    $color  (100% - $size - $position), 
+    $color (100% - $position), 
+    transparent (100% - $position), 
+    transparent
+  );
+  
+  @if $block {
+    // Add this pseudoelement if you want to make it block-ish
+    &:after {
+      content: '';
+      display: block;
+    }
+  }
+}
+
+@mixin max($width) {
+  @media only screen and (max-width: $width+ "px") {
+    @content; } }
+
+@mixin min($width) {
+  @media only screen and (min-width: $width+ "px") {
+    @content; } }
+
+
+@mixin adaptiv-font($pcSize, $mobSize) { // для адаптивного шрифта
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $max-width - $min-width;
+  font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$max-width}));
+}

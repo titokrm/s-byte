@@ -1,0 +1,18 @@
+.logo-about {
+
+  &__logo {
+    
+  }
+
+  &__name {
+    @include fontrem(42, 66, 900);
+    letter-spacing: 0.03em;
+    margin-bottom: rem(0);
+    margin-top: rem(20);
+  }
+
+  &__function {
+    @include fontrem(16.57, 28);
+    letter-spacing: 0.03em;
+  }
+}

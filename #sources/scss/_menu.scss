@@ -1,0 +1,30 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__item {
+    margin-right: rem(40);
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    transition: all $animate-time ease-in-out;
+    &:hover {
+      text-shadow: 0 0 .04em currentColor, 0 0 .04em currentColor, 0 0 .04em currentColor;
+    }
+  }
+
+  @include max($tab-width) {
+    display: block;
+    &__item {
+      margin-right: 0;
+      margin-bottom: rem(28);
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

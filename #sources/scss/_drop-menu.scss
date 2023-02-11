@@ -1,0 +1,63 @@
+.drop-menu {
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  transform: translateY(-100%);
+  transition: transform $animate-time ease-in-out;
+
+  &.active {
+    box-shadow: 0 0 rem(10) rgba(0,0,0,0.5);
+    transform: translateY(0%);
+  }
+
+  &__container {
+    height: rem(100);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: rem(10);
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__nav {
+  }
+
+  &__menu {
+    @include fontrem(24, 28, 400);
+    letter-spacing: 0.03em;
+  }
+  @include max($tab-width) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: rem(300);    
+    background-color: #fff;
+    transform: translateX(-100%);
+    overflow: auto;
+    padding-top: rem(70);
+    &.active {
+      transform: translateX(0%);
+    }
+    &__container {
+      height: auto;
+      position: static;
+    }
+    &__close {
+      right: rem(14);
+      top: rem(14);
+    }
+  }
+}

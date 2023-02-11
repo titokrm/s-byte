@@ -1,0 +1,32 @@
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  padding: 0 rem(38);
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: rem(10);
+  transition: all $animate-time ease-in-out;
+  white-space: nowrap;
+  height: rem(52);
+  @include fontrem(16.57, 32, 400);
+  letter-spacing: 0.03em;
+  min-width: rem(210);
+
+  &--color {
+    &--transp {
+      background-color: transparent;
+      color: inherit;
+      border: 1px solid currentColor;
+      outline: 1px solid transparent;
+    }
+  }
+
+  &:hover {
+    text-shadow: 0 0 .04em currentColor, 0 0 .04em currentColor, 0 0 .04em currentColor;
+    outline: 1px solid currentColor;
+  }
+
+}

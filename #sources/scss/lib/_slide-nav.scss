@@ -1,0 +1,39 @@
+.slide-nav {
+  @media screen and (max-width: $tab-width) {
+    @keyframes hidemenu {
+      0% {
+        opacity: 0;        
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 16rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: $back-default-color;
+    padding: rem($padding-container-tab);
+    transform: translateX(-100%);
+    z-index: 100;
+    animation-name: hidemenu;
+    animation-duration: $animate-time * 2;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    transition: transform $animate-time ease-in-out;
+    overflow: auto;
+
+    &.active {
+      transform: translateX(0);
+      box-shadow: 0 0 rem(20) rgba(0,0,0,0.7);
+    }
+  }
+}

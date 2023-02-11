@@ -1,0 +1,89 @@
+:root {
+  font-size: $rem-size * 1px;
+  height: 100%;
+}
+
+body {
+  font-size: 1rem;
+  min-height: 100%;
+  font-family: $default-font;
+  background-color: #fff;
+  color: $text-default-color;
+  font-weight: normal;
+  font-style: normal;
+  min-width: $min-width;
+  display: flex;
+  flex-direction: column;
+}
+
+[class*="container"] {
+  max-width: rem($width-container);
+  margin: auto;
+  width: 100%;
+  padding: 0 rem($padding-container);
+  @media screen and (max-width: $tab-width) {
+    padding: 0 rem($padding-container-tab);
+  }
+  @media screen and (max-width: $mob-width) {
+    padding: 0 rem($padding-container-mob);
+  }
+  @media screen and (max-width: $xs-mob-width) {
+    padding: 0 rem($padding-container-xs);
+  }
+}
+
+body.scroll-lock {
+  position: fixed;
+	left: 0;
+	width: 100%;
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+body.js-waiting:after {
+  position: fixed;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: url("../images/loading.gif") no-repeat center;
+  background-size: 3.13rem auto;
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.wrapper-global {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  flex: 1 1 auto;
+}
+body.scroll-lock .wrapper-global {
+  overflow-y: scroll;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+a {
+  color: $link-default-color;
+  text-decoration: $link-decoration;
+  transition: all $animate-time ease-in-out;
+  &:hover {
+    color: $link-hover-default-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+.icon {
+  display: inline-block;
+  transition: stroke $animate-time ease-in-out, fill $animate-time ease-in-out;
+  &--close {
+    @include sizerem(24, 24); //sizerem(width,[height])
+    stroke: $text-default-color;
+  }
+}

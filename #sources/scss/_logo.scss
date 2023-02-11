@@ -1,0 +1,8 @@
+.logo {
+
+  &__img {
+    display: block;
+    @include sizerem(90, 90); //sizerem(width,[height])
+    border-radius: rem(6);
+  }
+}

@@ -1,0 +1,33 @@
+.burger {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  @include sizerem(40, 40); //sizerem(width,[height])
+  padding: rem(10) rem(8);
+  &__line {
+    height: 2px;
+    width: perc(16.67, 24);
+    background-color: $text-default-color;
+    border-radius: 1px;
+    transition: width $animate-time ease-in-out;
+  }
+  &:before, &:after {
+    display: block;
+    content: '';
+    height: 2px;
+    width: 100%;
+    background-color: $text-default-color;
+    border-radius: 1px;
+    transition: width $animate-time ease-in-out;
+  }
+  &:after {
+    width: perc(10, 24);
+  }
+  &:hover {
+    .burger__line, &:after {
+      width: 100%;
+    }
+  }
+}
